@@ -1,0 +1,27 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{{object.}}
+
+<table width=70% border=0>
+<tr> <td align=right></td> <td>&nbsp;&nbsp;</td><td align=left><h2>{{ object.NAAM_VOLLEDIG }}</h2></td> </tr>
+<tr> <td align=right><strong>Adres</strong></td> <td>&nbsp;&nbsp;</td><td align=left></td> </tr>
+<tr> <td align=right>Straat:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.NAAM_STRAAT_VEST}} {{object.NR_HUIS_VEST}}</td> </tr>
+<tr> <td align=right>Postcode en plaats:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.POSTCODE_VEST}} {{object.NAAM_PLAATS_VEST}}</td> </tr>
+<tr> <td align=right>Gemeente:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.GEMEENTENAAM}}</td> </tr>
+<tr> <td align=right>Provincie:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.PROVINCIE_VEST}}</td> </tr>
+<tr> <td align=right>Website:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.INTERNET}}</td> </tr>
+<tr> <td align=right>Telefoon:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.NR_TELEFOON}}</td> </tr>
+<tr> <td align=right>Fax:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.NR_FAX}}</td> </tr>
+<tr> <td align=right>BRIN code:</td> <td>&nbsp;&nbsp;</td><td align=left> {{object.BRIN_NUMMER}}</td> </tr>
+<tr> <td align=right>&nbsp;</td><td>&nbsp;&nbsp;</td> <td align=left></td> </tr>
+<tr> <td align=right><strong>Correspondentieadres</strong></td><td>&nbsp;&nbsp;</td> <td align=left></td> </tr>
+<tr> <td align=right>Straat:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.NAAM_STRAAT_CORR}} {{object.NR_HUIS_CORR}}</td> </tr>
+<tr> <td align=right>Postcode en plaats:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.POSTCODE_CORR}} {{object.NAAM_PLAATS_CORR}}</td> </tr>
+<tr> <td align=right>&nbsp;</td> <td>&nbsp;&nbsp;</td><td align=left></td> </tr>
+<tr> <td align=right><strong>Bevoegd gezag</strong></td> <td>&nbsp;&nbsp;</td><td align=left></td> </tr>
+<tr> <td align=right>Naam:</td> <td>&nbsp;&nbsp;</td><td align=left>{{object.NAAM_VOLLEDIG_GEZ}}
+</td> </tr>
+<tr> <td align=right>Straat:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.NAAM_STRAAT_GEZ}} {{object.NR_HUIS_GEZ}}</td> </tr>
+<tr> <td align=right>Postcode en plaats:</td><td>&nbsp;&nbsp;</td> <td align=left>{{object.POSTCODE_GEZ}} {{object.NAAM_PLAATS_GEZ}}</td> </tr>
+</table>
+
+<a href="/scholen">Terug naar scholenlijst</a>

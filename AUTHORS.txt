@@ -1,0 +1,19 @@
+AUTHORS.txt v1.0, 24 May 2010, tbp 
+
+AUTHORS of Akvo / WASTE Decision Support Tool (DST)
+
+The PRIMARY AUTHORS are (and/or have been):
+- Mark Tiele Westra
+- Gabriel von Heijne
+
+Contributors, here is an inevitably incomplete list of MUCH APPRECIATED
+CONTRIBUTORS whom without, Akvo / WASTE DST  would not have been the same:
+
+- Chris Amsinger
+
+Further team members can be found at < http://www.akvo.org/web/team >
+
+Funding partners, without them Akvo / Wandelen voor Water could not have happened
+
+- Aqua for All
+

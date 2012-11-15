@@ -1,0 +1,20 @@
+/wvw/data/WvW.sqlite
+/wvw/datadir
+/wvw/datadir.*
+
+/wvw/recaptcha_key.py
+
+## Mac
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.TemporaryItems
+
+## Windows
+Thumbs.db 
+Desktop.ini
+
+## Python
+*.py[co]
+*.mo

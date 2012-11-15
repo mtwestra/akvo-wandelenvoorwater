@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+ <title>Search{% if naamschool %} Results{% endif %}</title>
+  <meta name="description" content="Wandelen voor Water">
+  <meta name="author" content="M.T. Westra">
+
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="/WvW_media/css/style.css?v=2">
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+ 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+ <!-- <script src="js/libs/modernizr-1.6.min.js"></script> -->
+    
+    
+</head>
+<body>
+
+
+<div id="results_container">
+  <h1>Scholen</h1>
+{% if object_list %}
+	<form action="/scholen/query/" method="get"> 
+    <fieldset>   
+    <legend>Zoeken</legend> 
+  U kunt zoeken op naam van de school, of de plaatsnaam of de gemeente. Typ minimaal drie letters in een van de velden.
+   <ol>
+    <li><label for="naam_school">Naam school</label> 
+    <input type="text" class="text" id="naam_school"name="naam_school" /></li>
+	<li><label for="plaatsnaam">Plaatsnaam</label> 
+	<input type="text" class="text" id="plaatsnaam" name="plaatsnaam" /></li>
+	<li><label for="gemeente">Gemeente</label> 
+	<input type="text" class="text" id="gemeente"name="gemeente" /></li>
+</ol>
+	</fieldset>
+	<fieldset class="submit"> 
+	<input type="submit" class="submit" value="Zoek" />&nbsp;&nbsp;&nbsp;<a href="/scholen">Terug naar alle scholen</a>
+	</fieldset>
+	</form>
+
+<hr>
+{% if naamschool %}
+	    <h2>Resultaten voor schoolnamen met "{{naamschool|escape }}", plaatsnaam met "{{plaatsnaam|escape}}", gemeente met "{{gemeente|escape}}" </h2>
+	    Klik op de naam van de kolom om te sorteren.
+{%endif%}
+
+
+<table id="results_table">  
+
+ <!-- Table header -->  
+  
+        <thead>  
+            <tr>  
+                <th scope="col" width=50% id="results_table_header">
+                	{%if order_by == "nd" %}<a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=nu"> Naam school &darr;</a>
+                	{%else %} 
+                		{%if order_by == "nu"%} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=nd">Naam school &uarr;</a> 
+                		{%else %} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=nd">Naam school</a> 
+                		{%endif%} 
+                	{%endif%}
+                </th> 
+                <th scope="col" width=25% id="results_table_header">
+                	{%if order_by == "pd" %}<a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=pu"> Plaatsnaam &darr;</a>
+                	{%else %}
+                		{%if order_by == "pu"%} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=pd">Plaatsnaam &uarr; </a>
+                		{%else %} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=pd">Plaatsnaam </a>
+                		{%endif%} 
+                	{%endif%}
+                </th> 
+                <th scope="col" width=25% id="results_table_header">
+                	{%if order_by == "gd" %} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=gu">Gemeente &darr;</a>
+                	{%else %} 
+                		{%if order_by == "gu"%} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=gd">Gemeente &uarr; </a>
+                		{%else %} <a href="/scholen/query/?page={{page_obj.number}}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order=gd">Gemeente</a> 
+                		{%endif%} 
+                	{%endif%}
+                </th> 
+            </tr>  
+        </thead>  
+        
+
+ <!-- Table body -->  
+  
+        <tbody>  
+           {% for object in object_list %}
+            	<tr>  
+                	<td><a href="/scholen/{{ object.id }}/">{{ object.NAAM_VOLLEDIG|escape }}</a></td>
+                	<td><a href="/scholen/{{ object.id }}/">{{ object.NAAM_PLAATS_VEST|escape }}</a></td>
+                	<td><a href="/scholen/{{ object.id }}/">{{ object.GEMEENTENAAM|escape }}</a></td>
+            	</tr>  
+           {% endfor %} 
+       </tbody>  
+</table>
+<br/>
+
+
+<div class="pagination">
+	<span class="step-links">
+		{% if is_paginated %}
+			<a href="/scholen/query/?page=1&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order={{order_by}}">first</a> 
+		{% endif %}
+			
+		{% if page_obj.has_previous %}
+			| <a href="/scholen/query/?page={{page_obj.previous_page_number }}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order={{order_by}}">previous</a> 
+		{% endif %}
+	
+		<span class="current">
+			| Pagina {{ page_obj.number }} van {{ paginator.num_pages }} | 
+		</span>
+	
+		{% if page_obj.has_next %}
+			<a href="/scholen/query/?page={{ page_obj.next_page_number }}&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order={{order_by}}">next</a> | 
+		{% endif %}
+			
+		{% if is_paginated %}
+			<a href="/scholen/query/?page=last&naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}&order={{order_by}}">last</a> |
+		{% endif %}
+		
+		<a href="/scholen/export/?naam_school={{naamschool}}&plaatsnaam={{plaatsnaam}}&gemeente={{gemeente}}">exporteer naar Excel</a>
+	</span>
+</div>
+
+
+{% else %}
+    <p>Geen scholen gevonden.</p>
+    {%if error_msg %}<p>{{error_msg}}</p> {%endif%}
+{% endif %}

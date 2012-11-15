@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+ <title>Inschrijfformulier</title>
+  <meta name="description" content="inschrijfformulier Wandelen voor Water">
+  <meta name="author" content="M.T. Westra">
+
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+	width: 200px;
+    }
+    .errorlist li {
+        background-color: #990000;
+        color: white;
+        display: block;
+        font-size: 11px;
+	font-weight:bold;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+    
+    h3 {
+     margin-top:30px;
+     margin-bottom:5px;
+    }
+    
+    .fieldWrapper {
+     margin-bottom:5px;
+    }
+    
+    div.errorlist
+    {
+    	 margin: 0;
+        padding: 0;
+	width: 200px;
+	background-color: #990000;
+        color: white;
+        display: block;
+        font-size: 11px;
+	font-weight:bold;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+        }
+</style>
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="/WvW_media/css/style.css">
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+ 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+ <!-- <script src="js/libs/modernizr-1.6.min.js"></script> -->
+    
+    
+</head>
+<body>
+
+
+<div id="results_container">
+  <form action="." method="POST">
+     {% csrf_token %}
+<div>
+	
+<p>Schrijf hier je school in voor Wandelen voor Water 2013. 
+
+<p>Ondervindt u problemen met inschrijven, stuur dan een email naar Mark Westra (<a href="mailto:m.t.westra@akvo.org">m.t.westra[at]akvo.org</a>) 
+	
+<p>Om mee te doen, zijn de volgende voorwaarden van toepassing:
+
+<h3>Voorwaarden</h3> 
+<ul>
+<li>Wandelen voor Water wordt gehouden in de week van Wereldwaterdag. De meeste scholen wandelen op 20 maart 2013</li>
+<li>Leerlingen uit groep (6) 7 en 8 wandelen 6 km met 6 liter water in hun rugzakje</li>
+<li>Leerlingen zoeken sponsors bij familie, vrienden.</li>
+<li>De opbrengst van de sponsortocht gaat naar drinkwater- en sanitatieprojecten en is bedoeld voor de allerarmsten</li>
+<li>De school besteedt tijdens de lessen aandacht aan de waterproblematiek door middel van een lespakket en een gastles.</li>
+</ul>	
+	
+	
+Velden met een <b><span style="color:#ff0000;font-size:150%">*</span></b> zijn verplicht.
+<h3>Gegevens van de school en contactpersoon</h3>
+    <div class="fieldWrapper">
+        {{ form.NAAM_SCHOOL.errors }}
+        <label for="id_NAAM_SCHOOL">Naam van de school<b><b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.NAAM_SCHOOL }}
+    </div>
+
+  <div class="fieldWrapper">
+        {{ form.ADRES.errors }}
+        <label for="id_ADRES">Adres<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.ADRES }}
+    </div>
+
+  <div class="fieldWrapper">
+        {{ form.PLAATS.errors }}
+        <label for="id_PLAATS">Plaats<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.PLAATS }}
+    </div>
+
+  <div class="fieldWrapper">
+        {{ form.POSTCODE.errors }}
+        <label for="id_POSTCODE">Postcode<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.POSTCODE }}
+    </div>
+
+
+
+  <div class="fieldWrapper">
+        {{ form.NAAM_CONTACT.errors }}
+        <label for="id_NAAM_CONTACT">Naam contactpersoon<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.NAAM_CONTACT }}
+    </div>
+
+  <div class="fieldWrapper">
+        {{ form.EMAIL_CONTACT.errors }}
+        <label for="id_EMAIL_CONTACT">Emailadres<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.EMAIL_CONTACT }}
+    </div>
+  
+  <div class="fieldWrapper">
+        {{ form.NR_TELEFOON.errors }}
+        <label for="id_NR_TELEFOON">Telefoonnummer:</label>
+        {{ form.NR_TELEFOON }}
+    </div>
+<br>
+Heeft de school in de afgelopen jaren eerder meegedaan met<br>Wandelen voor Water? U kunt meerdere opties aanklikken.
+  <div class="fieldWrapper">
+        {{ form.EERDER_MEEGEDAAN_nee.errors }}
+        <label for="EERDER_MEEGEDAAN_nee">&nbsp;&nbsp;&nbsp;&nbsp;nee:</label>
+        {{ form.EERDER_MEEGEDAAN_nee }}
+    </div>
+  <div class="fieldWrapper">
+        {{ form.EERDER_MEEGEDAAN_VJ.errors }}
+        <label for="EERDER_MEEGEDAAN_VJ">2012:</label>
+        {{ form.EERDER_MEEGEDAAN_VJ }}
+    </div>
+    
+    <div class="fieldWrapper">
+        {{ form.EERDER_MEEGEDAAN_TJ.errors }}
+        <label for="EERDER_MEEGEDAAN_TJ">2011:</label>
+        {{ form.EERDER_MEEGEDAAN_TJ }}
+    </div>
+    
+      <div class="fieldWrapper">
+        {{ form.EERDER_MEEGEDAAN_eerder.errors }}
+        <label for="EERDER_MEEGEDAAN_eerder">&nbsp;&nbsp;&nbsp;&nbsp;meer dan twee jaar geleden:</label>
+        {{ form.EERDER_MEEGEDAAN_eerder }}
+    </div>
+
+<h3>Deelnemende groepen en aantal leerlingen</h3>
+In de velden voor de groepen het aantal groepen invullen, dus niet het aantal leerlingen per groep.
+<div class="fieldWrapper">
+        {{ form.NUM_GROEP_GR7.errors }}
+        <label for="NUM_GROEP_GR7">Aantal groepen 7:</label>
+        {{ form.NUM_GROEP_GR7 }}
+    </div>
+<div class="fieldWrapper">
+        {{ form.NUM_GROEP_GR8.errors }}
+        <label for="NUM_GROEP_GR8">Aantal groepen 8:</label>
+        {{ form.NUM_GROEP_GR8 }}
+    </div>
+<div class="fieldWrapper">
+        {{ form.NUM_GROEP_GR.errors67 }}
+        <label for="NUM_GROEP_GR67">Aantal groepen 6/7:</label>
+        {{ form.NUM_GROEP_GR67 }}
+    </div>
+<div class="fieldWrapper">
+        {{ form.NUM_GROEP_GR678.errors }}
+        <label for="NUM_GROEP_GR678">Aantal groepen 6/7/8 :</label>
+        {{ form.NUM_GROEP_GR678 }}
+    </div>
+<div class="fieldWrapper">
+        {{ form.NUM_GROEP_GR78.errors }}
+        <label for="NUM_GROEP_GR78">Aantal groepen 7/8:</label>
+        {{ form.NUM_GROEP_GR78 }}
+    </div>
+
+Het totaal aantal leerlingen in alle groepen.
+<br><br>
+      <div class="fieldWrapper">
+        {{ form.TOTAAL_LEERLINGEN.errors }}
+        <label for="TOTAAL_LEERLINGEN">Totaal aantal leerlingen<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.TOTAAL_LEERLINGEN }}
+    </div>
+
+<h3>Gegevens wandeling</h3>
+
+   <div class="fieldWrapper">
+        {{ form.STEUNPUNT.errors }}
+        <label for="STEUNPUNT">Met welk steunpunt werkt de school samen? Als het steunpunt nog niet bekend is, kies dan "(nog onbekend)" uit de lijst<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.STEUNPUNT }}
+    </div>
+<br><br><br><br><br>
+<!--<div class="fieldWrapper">
+        {{ form.PROJECT.errors }}
+        <label for="PROJECT">Voor welk project gaat de school lopen? Als het project nog niet bekend is, kies dan "Nog onbekend":</label>
+        {{ form.PROJECT }}
+    </div> 
+<br><br><br> -->
+
+<div class="fieldWrapper">
+        {{ form.DATUM_WANDELING.errors }}
+        <label for="DATUM_WANDELING">Datum wandeling (DD-MM-JJJJ):</label>
+        {{ form.DATUM_WANDELING }}
+    </div>
+<br>
+
+<div class="fieldWrapper">
+        {{ form.PLAATS_WANDELING.errors }}
+        <label for="PLAATS_WANDELING">Plaats wandeling:</label>
+        {{ form.PLAATS_WANDELING }}
+    </div>
+
+<h3>Akkoord voorwaarden en opmerkingen</h3>
+<div class="fieldWrapper">
+        {{ form.AKKOORD_VOORW.errors }}
+        <label for="AKKOORD_VOORW">Ja, ik ga akkoord met de voorwaarden (zie boven)<b><span style="color:#ff0000;font-size:150%">*</span></b>:</label>
+        {{ form.AKKOORD_VOORW }}
+    </div>
+<br><br>
+
+<div class="fieldWrapper">
+        {{ form.OPMERKINGEN.errors }}
+        <label for="OPMERKINGEN">Opmerkingen:</label>
+        {{ form.OPMERKINGEN }}
+    </div>
+
+ 
+ <h3>Anti-spam test<b><span style="color:#ff0000;font-size:150%">*</span></b>. Typ de twee woorden in, en klik pas daarna op 'submit'.</h3>
+ {% if form.recaptcha.errors %}
+ <div class="errorlist">
+ 	{{ form.recaptcha.errors|join:", " }}
+ 	</div>{% endif %}
+ {{ form.recaptcha }}
+<p style="margin:0 0 0 100px;"> <small>The words above come from scanned books. <br/>
+By typing them, you help to digitize old texts.</small></p>
+ 
+ 	<br />
+
+</div>
+
+  <p><input type="submit" value="Submit"></p>
+  </form>
+ 
+
+    
+</div>
+
+
+
+
+
+
+
+
+
